@@ -1,3 +1,4 @@
+#%%
 import pandas as pd
 import numpy as np
 from statsmodels.regression import linear_model
@@ -7,7 +8,7 @@ from sklearn.preprocessing import PolynomialFeatures
 df_parameters = pd.read_parquet("parameters100realizations.parquet")
 df_response = pd.read_parquet("response_grid_volumes_100realizations.parquet")
 
-# Velger ut hvilken response man vil se på (f.eks. bulk oil)
+# Velger ut hvilken response man vil se på (f.eks. bulk oil) ved eliminasjonsmetoden hehe
 filtered_response = df_response.drop(columns=['PORE_OIL', 'HCPV_OIL', 'STOIIP_OIL'])
 
 # Merger dataframesene på ensemble og real
@@ -45,7 +46,7 @@ def duplicate_columns(frame):
 duplicates = duplicate_columns(filtered_df)
 filtered_df.drop(duplicates, inplace=True, axis=1)
 
-# Printer ut den ferdige dataframen med de responsen og de 9 gjenværende parameterne
+# Printer ut den ferdige dataframen med 1 respons (bulk oil) og de 9 gjenværende parameterne
 print(filtered_df)
 
 # Lager variabler som skal brukes i regresjonen
