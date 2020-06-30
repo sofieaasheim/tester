@@ -1,6 +1,5 @@
 import dash_html_components as html
 import dash_core_components as dcc
-import plotly.express as px
 import plotly.graph_objects as go
 import webviz_core_components as wcc
 from webviz_config import WebvizPluginABC
