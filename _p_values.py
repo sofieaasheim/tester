@@ -15,7 +15,7 @@ p_values = {
 }
 
 class PValues(WebvizPluginABC):
-    def __init__(self):
+    def __init__(self, app):
         super().__init__()
 
     @property
@@ -43,16 +43,16 @@ def make_p_values_plot(self, p_values):
     
     """ Making an array for the corresponding colors """
     col_values = [int(i*100) for i in calc_p_values]
-    colors = ['crimson']*len(parameters)
+    colors = ['#FF1243']*len(parameters) # Red Equinor color
     
     for i, v in enumerate(col_values):
-        if v < 5:
-            colors[i] = 'mediumseagreen'
+        if v <= 5:
+            colors[i] = '#5AC864' # Green color
 
     """ Making the bar chart plot """
     fig = go.Figure([go.Bar(x=parameters, y=calc_p_values, marker_color=colors)])
     fig.update_layout(
-        yaxis=dict(range=[0,1], title=f'P-values'), 
+        yaxis=dict(range=[0,1], title=f'p-values'), 
         xaxis=dict(title='Parameters'),
         title='P-values for the key parameter combination',
         autosize=False,
